@@ -5,6 +5,9 @@
   --bg: #05060b;
   --fg: #f4f4f5;
   --card: rgba(12, 13, 20, 0.72);
+  --bg: #0b0b10;
+  --fg: #fafafa;
+  --card: rgba(12, 12, 18, 0.72);
   --accent: #c5f36b;
   --accent-strong: #a6f60a;
   --muted: #a1a1aa;
@@ -19,6 +22,9 @@ body {
   background: radial-gradient(circle at 18% 20%, rgba(197, 243, 107, 0.06), transparent 26%),
               radial-gradient(circle at 82% 18%, rgba(93, 138, 255, 0.12), transparent 34%),
               linear-gradient(160deg, #05060b 0%, #0b0b13 52%, #05060b 100%);
+  background: radial-gradient(circle at 20% 20%, rgba(197, 243, 107, 0.04), transparent 25%),
+              radial-gradient(circle at 80% 10%, rgba(93, 138, 255, 0.08), transparent 32%),
+              linear-gradient(180deg, #0b0b10 0%, #09090b 45%, #0c0c12 100%);
   color: var(--fg);
 }
 
@@ -106,6 +112,9 @@ textarea { resize: vertical; }
   pointer-events: none;
   z-index: 0;
   animation: pulse-rotate 42s linear infinite;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .bg-orb {
@@ -116,6 +125,9 @@ textarea { resize: vertical; }
   z-index: 0;
   pointer-events: none;
   animation: float 18s ease-in-out infinite;
+  opacity: 0.4;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .bg-orb-left {
@@ -125,6 +137,9 @@ textarea { resize: vertical; }
   top: 12%;
   left: -120px;
   animation-delay: -3s;
+  background: radial-gradient(circle, rgba(197,243,107,0.35), transparent 65%);
+  top: 12%;
+  left: -120px;
 }
 
 .bg-orb-right {
@@ -167,6 +182,12 @@ textarea { resize: vertical; }
 }
 
 header { backdrop-filter: blur(16px); border-color: rgba(255,255,255,0.08) !important; }
+  background: radial-gradient(circle, rgba(80,129,255,0.32), transparent 62%);
+  bottom: 6%;
+  right: -100px;
+}
+
+header { backdrop-filter: blur(12px); }
 
 .page-heading {
   display: flex;
@@ -236,6 +257,19 @@ header { backdrop-filter: blur(16px); border-color: rgba(255,255,255,0.08) !impo
 }
 
 .glass-card > *, .glass-card-strong > * { position: relative; z-index: 2; }
+
+.glass-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.02);
+  backdrop-filter: blur(10px);
+}
+
+.glass-card-strong {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+}
 
 .chip {
   display: inline-flex;
