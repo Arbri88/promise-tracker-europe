@@ -9,7 +9,13 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen relative overflow-x-hidden">
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-aurora" aria-hidden="true"></div>
+  <div class="bg-pulse" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb-left" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb-right" aria-hidden="true"></div>
+  <div class="bg-pointer" aria-hidden="true"></div>
   <header class="sticky top-0 z-40 border-b border-zinc-800 bg-zinc-950/70">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
       <a href="#/countries" class="flex items-center gap-3">
@@ -35,10 +41,10 @@
     </div>
   </header>
 
-  <main id="app" class="max-w-6xl mx-auto px-4 py-6"></main>
+  <main id="app" class="relative z-10 max-w-6xl mx-auto px-4 py-6"></main>
 
   <!-- Toast -->
-  <div id="toast" class="hidden fixed bottom-20 left-1/2 -translate-x-1/2 rounded-full border border-zinc-800 bg-zinc-950/80 px-4 py-2 text-sm shadow-lg"></div>
+  <div id="toast" class="hidden fixed bottom-20 left-1/2 -translate-x-1/2 rounded-full border border-zinc-800 bg-zinc-950/80 px-4 py-2 text-sm toast-shadow"></div>
 
   <!-- Search modal -->
   <div id="searchModal" class="hidden fixed inset-0 z-50">
