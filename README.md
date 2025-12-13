@@ -30,8 +30,8 @@ Because routing is hash-based (`#/country/albania`), it works without server rew
 ## Folder structure
 
 - `index.html` – app shell
-- `assets/data.js` – countries list + seeded Albania/Norway + EU placeholder data
-- `assets/app.js` – router + charts + event wiring
-- `assets/ui.js` – UI templates
-- `assets/store.js` – localStorage utilities
-- `assets/styles.css` – minimal styles + legacy prototype CSS
+- `data.js` – countries list + seeded Albania/Norway + EU placeholder data
+- `app.js` – router + charts + event wiring
+- `ui.js` – UI templates
+- `store.js` – localStorage utilities
+- `styles.css` – minimal styles + legacy prototype CSS
