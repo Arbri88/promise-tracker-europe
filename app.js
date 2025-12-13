@@ -48,6 +48,20 @@ let state = {
   charts: [],
 };
 
+const rootEl = document.documentElement;
+function handlePointerMove(e) {
+  const x = `${e.clientX}px`;
+  const y = `${e.clientY}px`;
+  rootEl?.style.setProperty('--pointer-x', x);
+  rootEl?.style.setProperty('--pointer-y', y);
+}
+window.addEventListener('pointermove', handlePointerMove);
+window.addEventListener('touchmove', (e) => {
+  const touch = e.touches?.[0];
+  if (!touch) return;
+  handlePointerMove(touch);
+}, { passive: true });
+
 function toast(msg) {
   if (!$toast) return;
   $toast.textContent = msg;

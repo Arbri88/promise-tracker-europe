@@ -46,9 +46,9 @@ export function categoryPill(category) {
 
 export function statCard(title, value, sub='') {
   return `
-    <div class="rounded-2xl border border-zinc-800 bg-zinc-950/50 p-4 shadow-sm">
+    <div class="rounded-2xl glass-card p-4">
       <div class="text-xs text-zinc-400">${escapeHtml(title)}</div>
-      <div class="mt-2 text-2xl font-semibold">${escapeHtml(String(value))}</div>
+      <div class="mt-2 stat-emphasis font-semibold">${escapeHtml(String(value))}</div>
       ${sub ? `<div class="mt-1 text-xs text-zinc-500">${escapeHtml(sub)}</div>` : ''}
     </div>
   `;
@@ -56,7 +56,7 @@ export function statCard(title, value, sub='') {
 
 export function renderShell({ title, subtitle, actionsHtml='' }) {
   return `
-    <div class="flex items-start justify-between gap-4">
+    <div class="page-heading">
       <div>
         <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight">${escapeHtml(title)}</h1>
         ${subtitle ? `<p class="mt-2 text-sm text-zinc-400 max-w-3xl">${escapeHtml(subtitle)}</p>` : ''}
@@ -70,7 +70,7 @@ export function renderCountriesPage({ countries, q='' }) {
   const query = String(q || '').trim().toLowerCase();
   const filtered = countries.filter(c => c.name.toLowerCase().includes(query) || c.slug.includes(query) || c.code.toLowerCase().includes(query));
   const cards = filtered.map(c => `
-    <a href="#/country/${c.slug}" class="group rounded-2xl border border-zinc-800 bg-zinc-950/40 hover:bg-zinc-950/70 transition p-4 shadow-sm">
+    <a href="#/country/${c.slug}" class="group rounded-2xl glass-card hover:bg-zinc-950/70 transition p-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div class="text-2xl">${flagEmoji(c.code)}</div>
@@ -103,7 +103,7 @@ export function renderCountryHeader({ country, actor, stats }) {
   const small = `${leader}${party} · term: ${term}`;
 
   return `
-    <div class="rounded-3xl border border-zinc-800 bg-gradient-to-b from-zinc-950/70 to-zinc-950/30 p-5 sm:p-6 shadow-sm">
+    <div class="rounded-3xl glass-card-strong p-5 sm:p-6">
       <div class="flex items-start justify-between gap-4">
         <div class="flex items-center gap-4">
           <div class="text-3xl">${flagEmoji(country.code)}</div>
@@ -136,7 +136,7 @@ export function renderCountryTabs({ countrySlug, tab }) {
     const cls = active
       ? 'bg-zinc-100 text-zinc-950'
       : 'bg-zinc-950/50 text-zinc-300 hover:bg-zinc-950/80';
-    return `<a class="px-3 py-2 rounded-xl text-sm font-medium border border-zinc-800 ${cls} transition" href="#/country/${countrySlug}/${key}">${escapeHtml(label)}</a>`;
+    return `<a class="px-3 py-2 rounded-xl text-sm font-medium pill ${cls} transition" href="#/country/${countrySlug}/${key}">${escapeHtml(label)}</a>`;
   }).join('');
   return `<div class="mt-4 flex flex-wrap gap-2">${items}</div>`;
 }
@@ -146,7 +146,7 @@ export function renderPromisesList({ promises }) {
     return `<div class="mt-6 text-sm text-zinc-400">No promises tracked for this country yet.</div>`;
   }
   const rows = promises.map(p => `
-    <a href="#/promise/${encodeURIComponent(p.id)}" class="block rounded-2xl border border-zinc-800 bg-zinc-950/40 hover:bg-zinc-950/70 transition p-4">
+    <a href="#/promise/${encodeURIComponent(p.id)}" class="block rounded-2xl glass-card hover:bg-zinc-950/70 transition p-4">
       <div class="flex items-start justify-between gap-4">
         <div>
           <div class="font-medium leading-snug">${escapeHtml(p.title)}</div>
@@ -170,7 +170,7 @@ export function renderTimeline({ promises }) {
     .sort((a,b) => new Date(b.updatedAt) - new Date(a.updatedAt))
     .slice(0, 50)
     .map(p => `
-      <div class="rounded-2xl border border-zinc-800 bg-zinc-950/40 p-4">
+      <div class="rounded-2xl glass-card p-4">
         <div class="flex items-center justify-between gap-3">
           <div class="font-medium">${escapeHtml(p.title)}</div>
           <div class="text-xs text-zinc-500">${formatDate(p.updatedAt)}</div>
@@ -185,14 +185,14 @@ export function renderTimeline({ promises }) {
 
 export function renderInsights({ stats }) {
   return `
-    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+    <div class="mt-6 grid stat-grid gap-3">
       ${statCard('Kept', stats.kept, `${stats.keptPct}% of tracked`)}
       ${statCard('In progress', stats.inProgress, `${stats.inProgressPct}% of tracked`)}
       ${statCard('Stalled', stats.stalled, `${stats.stalledPct}% of tracked`)}
       ${statCard('Broken', stats.broken, `${stats.brokenPct}% of tracked`)}
     </div>
 
-    <div class="mt-6 rounded-2xl border border-zinc-800 bg-zinc-950/40 p-4">
+    <div class="mt-6 rounded-2xl glass-card p-4">
       <div class="flex items-center justify-between">
         <div class="font-medium">Category mix</div>
         <div class="text-xs text-zinc-500">based on tracked promises</div>
